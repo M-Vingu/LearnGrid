@@ -1,0 +1,20 @@
+services:
+  database:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: learngrid
+      POSTGRES_USER: learngrid
+      POSTGRES_PASSWORD: learngrid
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - learngrid-postgres:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U learngrid -d learngrid"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  learngrid-postgres:

@@ -1,0 +1,43 @@
+{
+  "name": "learngrid-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --import tsx --watch src/server.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "npm run build && node --test dist/app.test.js",
+    "test:integration": "npm run build && node --test dist/database.integration.test.js",
+    "db:generate": "node --env-file-if-exists=.env ./node_modules/drizzle-kit/bin.cjs generate",
+    "db:migrate": "node --env-file-if-exists=.env ./node_modules/drizzle-kit/bin.cjs migrate",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/rate-limit": "^10.3.0",
+    "drizzle-orm": "0.45.4",
+    "fastify": "^5.6.2",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.5",
+    "drizzle-kit": "0.31.11",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2"
+  },
+  "allowScripts": {
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true
+  }
+}
