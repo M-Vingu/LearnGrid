@@ -1,8 +1,20 @@
 # LearnGrid learning platform blueprint
 
-**Product starting point:** primary-school learners; curriculum-neutral at launch.
+**Product scope:** a global learning platform spanning Grade 1 through advanced and higher education. The first market is the United States, with English as the initial language. Kenya and additional regions are planned through separately reviewed curriculum and localization packs. The first content pilot remains primary mathematics.
 
 **First pilot subject:** mathematics. Fractions are a proposed first unit because they support a clear path from concrete visuals to symbolic reasoning and applied problems. Confirm the target primary grade/age band before writing final content.
+
+## Global curriculum and localization model
+
+LearnGrid should maintain a shared, curriculum-independent concept and prerequisite graph, then map that graph to versioned regional curriculum frameworks. A learner's pathway is determined by demonstrated understanding, selected goals, and local curriculum context, without assuming that a grade means the same thing in every country. The intended long-term range is Grade 1 through upper secondary, tertiary, professional, and advanced study; this is a product scope, not a claim that all subjects or levels are available at launch.
+
+The U.S. is the first market. There is no single mandatory U.S. curriculum: state and local expectations differ, and Common Core is a voluntary framework adopted or adapted by jurisdictions. Each U.S. alignment must name the state or district, framework and edition, standard identifier, and effective period. Kenya's curriculum pack should map objectives against current Kenya Institute of Curriculum Development (KICD) designs, beginning with the appropriate grade band and subject; it must be reviewed by educators familiar with Kenyan classrooms. Other countries require their own current authoritative frameworks and local review. UNESCO's ISCED may help compare broad education levels across countries, but it is not a substitute for a national or local curriculum.
+
+Each curriculum mapping should record jurisdiction, framework publisher, framework version, grade/course/stage label, objective identifiers, source link, reviewer, review date, and active dates. Preserve old mappings when a framework changes so historical learner records retain their original context. Shared concepts may map to different grade bands or sequences in different places; do not force a one-to-one grade equivalence.
+
+The initial release is English. Design content records for localization from the start: keep instructional text separate from examples, units, number/date formatting, terminology, and translated strings. Later language packs should use qualified human translation and local educator review, preserve mathematical meaning, and identify language and locale. Add Kiswahili and other learner-relevant languages based on community and market needs; do not infer language from country. Keep source material and content reuse rights explicit across regions.
+
+The first rollout decisions are now recorded as **U.S. first** and **English initially**. They do not reduce the broader goal of supporting Kenya and global learners.
 
 ## Product promise
 
@@ -69,6 +81,8 @@ Preserve the current student, teacher, and administrator roles and visual direct
 
 The first persistent model should support:
 
+- `jurisdiction`, `curriculum_framework`, `framework_version`, and `curriculum_mapping` records, including source, grade/course labels, effective dates, and review history.
+- A shared concept graph that is independent of grade labels, with curriculum-specific mappings for local sequencing and coverage.
 - `subject`, `concept`, `concept_prerequisite`, and `learning_objective` records.
 - `source` and `source_update` records for provenance, rights, update/retraction checks, and review due dates.
 - `content_item` and immutable `content_version` records with reading band, language, objective, explanation, examples, accessibility alternatives, and editorial status.
@@ -92,12 +106,12 @@ Do not add these tables until database verification is available. Design them wi
 ## Build sequence
 
 1. **Finish backend verification.** Restore a PostgreSQL 18 test service, make the real integration test run, and establish migration generation/application/repeatability. This remains blocked in the current environment.
-2. **Set the first pilot scope.** Start with a small primary mathematics unit on fractions, confirm the target grade/age band and language, and identify a teacher plus subject reviewer. Curriculum-neutral does not mean context-free; note local examples and vocabulary.
+2. **Set the first pilot scope.** U.S. first, English initially; start with a small primary mathematics fractions unit. Confirm the specific U.S. state/framework and target grade/age band, then identify a classroom teacher and subject reviewer. Keep the shared concept model curriculum-independent, but align published content to the chosen local framework and record local examples and vocabulary.
 3. **Complete identity and permissions.** Implement server-enforced student, teacher, reviewer, and administrator access before storing learner histories.
 4. **Model the curriculum and reviewed content.** Add migrations, source/citation/version workflows, authoring review states, and API contracts. Publish content only through an auditable approval step.
 5. **Build one end-to-end unit.** Integrate the existing dashboard with real API data and implement the complete learner path above, including hints, feedback, game practice, challenge progression, and a later review.
 6. **Validate with classrooms.** Observe whether learners understand explanations, whether challenge recommendations match their work, whether the game teaches the intended skill, and whether recall lasts after a delay. Improve content and rules before scaling subjects.
-7. **Expand the library deliberately.** Add domains, contributors, source monitoring, translations, and more adaptive recommendations after editorial and safeguarding workflows work for the pilot.
+7. **Expand the library deliberately.** Extend from the first primary unit across Grade 1 through advanced study, one reviewed subject and stage at a time. Add state-by-state U.S. mappings, then a KICD-reviewed Kenya pack and other regional packs; add languages through qualified translation and educator review. Grow contributors, source monitoring, and adaptive recommendations only after editorial and safeguarding workflows work for the pilot.
 
 ## First-release acceptance checks
 
@@ -113,4 +127,4 @@ Do not add these tables until database verification is available. Design them wi
 - `frontend/src/App.jsx` is an interactive sample dashboard with local React state; it has no API-backed course or learning data yet.
 - `backend/` has Fastify health endpoints and PostgreSQL configuration, but no user, content, assessment, or progress schema, and no migrations.
 - Backend unit tests pass, but PostgreSQL integration and migration checks are blocked until PostgreSQL 18 is available.
-- Therefore the next code change should follow a scoped product/content design and database verification; do not wire simulated learner progress into a false production API.
+- Therefore the next code change should follow a scoped product/content design and database verification; do not wire simulated learner progress into a false production API. The product goal covers Grade 1 through advanced/higher education globally; the current launch scope is U.S.-first, English, with a primary mathematics pilot.

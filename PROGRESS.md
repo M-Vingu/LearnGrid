@@ -4,7 +4,7 @@ Last reviewed: 2026-10-24
 
 ## Product direction
 
-LearnGrid needs student, teacher, and administrator dashboards. The first learner audience is primary school; launch content should be curriculum-neutral. Lessons should introduce ideas accessibly, use purposeful practice and games, then progress to harder application as learners demonstrate understanding. The knowledge library should cite expert and institutional sources and support editorial review and updates.
+LearnGrid needs student, teacher, and administrator dashboards. Long-term scope is Grade 1 through advanced and higher education, for learners globally. Initial rollout is U.S.-first and English-language. LearnGrid should use a shared concept graph with versioned, locally reviewed curriculum mappings; the first content pilot remains primary mathematics. Lessons should introduce ideas accessibly, use purposeful practice and games, then progress to harder application as learners demonstrate understanding. The knowledge library should cite expert and institutional sources and support editorial review and updates.
 
 ## Frontend now implemented
 
@@ -60,9 +60,11 @@ Provide a running PostgreSQL 18 service (preferably disposable test DB named wit
 
 ## Learning product direction
 
-- Added `docs/LEARNING_PLATFORM_BLUEPRINT.md` for the primary-school, curriculum-neutral learning experience and knowledge-source plan.
+- Added `docs/LEARNING_PLATFORM_BLUEPRINT.md` for the staged learning experience, evidence-based knowledge-source workflow, and curriculum/localization architecture.
 - The blueprint defines concept-level progression, diagnostic entry, clear introductions, worked examples, low-pressure retrieval/game practice, explanatory feedback, gradually harder transfer tasks, and later spaced review. It avoids using speed, streaks, or a single score as mastery.
 - It describes a cited, versioned, human-reviewed knowledge workflow, domain-specific source policies, editorial review dates, correction history, and AI-assisted drafts that cannot publish without human review.
 - It proposes a first content/progress data model and implementation sequence, while reflecting the current blocker: no PostgreSQL integration service, migrations, auth, or persistent learning data exists yet.
 - Evidence consulted: National Academies' *How People Learn II*, the What Works Clearinghouse study guide, and systematic reviews/meta-analyses of game-based learning. These sources are linked in the blueprint.
-- First pilot subject selected: primary-school mathematics. Fractions are proposed as the first unit; confirm grade/age band and language before writing final lesson content. The blueprint keeps launch content curriculum-neutral and calls out local examples and vocabulary.
+- First pilot subject selected: primary mathematics; fractions are proposed as the first unit. The user set the first market as the U.S. and the initial language as English, with a long-term goal of Grade 1 through advanced/higher education globally. Before final lesson content, choose the U.S. state or district framework and target grade/age band. U.S. standards vary by jurisdiction; do not present one framework as universally adopted. Kenya should receive a KICD-reviewed curriculum pack, not a direct grade-number translation. Global level comparisons may use UNESCO ISCED as a reference taxonomy, not as a curriculum.
+
+- Updated the blueprint for shared concepts with independently versioned jurisdiction curriculum mappings, content localization, human-reviewed translations, and staged expansion from the primary pilot to advanced learning. Official references: [Common Core FAQs](https://www.thecorestandards.org/frequently-asked-questions/), [KICD Lower Primary designs](https://kicd.ac.ke/cbc-materials/lower-primary/), [UNESCO UIS ISCED](https://www.uis.unesco.org/en/methods-and-tools/isced), and [UNESCO multilingual education guidance](https://www.unesco.org/en/articles/new-unesco-guidance-calls-multilingual-education-unlock-learning-and-inclusion?hub=378).
