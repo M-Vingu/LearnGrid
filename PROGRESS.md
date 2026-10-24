@@ -1,10 +1,10 @@
 # LearnGrid progress
 
-Last reviewed: 2026-10-22
+Last reviewed: 2026-10-24
 
 ## Product direction
 
-LearnGrid needs three dashboards: a student dashboard, a teacher dashboard, and an administrator dashboard for the owner. The user wants to complete and review the frontend before moving on to backend work.
+LearnGrid needs student, teacher, and administrator dashboards. The first learner audience is primary school; launch content should be curriculum-neutral. Lessons should introduce ideas accessibly, use purposeful practice and games, then progress to harder application as learners demonstrate understanding. The knowledge library should cite expert and institutional sources and support editorial review and updates.
 
 ## Frontend now implemented
 
@@ -21,7 +21,7 @@ LearnGrid needs three dashboards: a student dashboard, a teacher dashboard, and 
 
 - `frontend/` uses React 19 and Vite. `react-router-dom` is installed, though this prototype switches views with local React state.
 - Available scripts, run from `frontend/`: `npm run dev`, `npm run build`, `npm run lint`, and `npm run preview`.
-- The workspace root does not appear to be a Git repository.
+- The workspace is a Git repository on `main`, tracking the separate `M-Vingu/LearnGrid` GitHub remote. The user wants project files backed up there; `.env`, dependencies, and build output are excluded.
 
 ## Backend foundation started
 
@@ -57,3 +57,12 @@ LearnGrid needs three dashboards: a student dashboard, a teacher dashboard, and 
 ### Phase 2 next steps / blocker
 
 Provide a running PostgreSQL 18 service (preferably disposable test DB named with `_test`) and resolve the Drizzle Kit CLI environment failure. Then rerun the integration test, verify readiness transitions with a real DB outage, create/review the first migration before applying it twice, and confirm the real pool closes on signal. Do not begin identity or learning domain implementation until these verification steps are complete.
+
+## Learning product direction
+
+- Added `docs/LEARNING_PLATFORM_BLUEPRINT.md` for the primary-school, curriculum-neutral learning experience and knowledge-source plan.
+- The blueprint defines concept-level progression, diagnostic entry, clear introductions, worked examples, low-pressure retrieval/game practice, explanatory feedback, gradually harder transfer tasks, and later spaced review. It avoids using speed, streaks, or a single score as mastery.
+- It describes a cited, versioned, human-reviewed knowledge workflow, domain-specific source policies, editorial review dates, correction history, and AI-assisted drafts that cannot publish without human review.
+- It proposes a first content/progress data model and implementation sequence, while reflecting the current blocker: no PostgreSQL integration service, migrations, auth, or persistent learning data exists yet.
+- Evidence consulted: National Academies' *How People Learn II*, the What Works Clearinghouse study guide, and systematic reviews/meta-analyses of game-based learning. These sources are linked in the blueprint.
+- First pilot subject selected: primary-school mathematics. Fractions are proposed as the first unit; confirm grade/age band and language before writing final lesson content. The blueprint keeps launch content curriculum-neutral and calls out local examples and vocabulary.
